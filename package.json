@@ -7,7 +7,6 @@
     "build": "npm run redirects:enable && remix build",
     "dev": "npm run redirects:disable && remix dev",
     "start": "netlify serve",
-    "typecheck": "tsc -b",
     "redirects:enable": "shx cp .redirects public/_redirects",
     "redirects:disable": "shx rm -f public/_redirects"
   },
@@ -22,12 +21,8 @@
   },
   "devDependencies": {
     "@remix-run/dev": "^2.2.0",
-    "@remix-run/eslint-config": "^2.2.0",
     "@remix-run/serve": "^2.2.0",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "eslint": "^8.27.0",
-    "typescript": "^5.2.2"
+    "@types/react": "^18.2.0"
   },
   "engines": {
     "node": ">=18"
