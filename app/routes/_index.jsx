@@ -1,24 +1,33 @@
+import { useOutletContext } from '@remix-run/react';
+
 export default function Index() {
+  const { authRedirect, supabase, session } = useOutletContext();
+
+  const handleSignIn = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        queryParams: {
+          access_type: 'offline',
+          prompt: 'consent',
+        },
+        redirectTo: authRedirect,
+      },
+    });
+  };
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+  };
+
   return (
-    <main style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
+    <main>
       <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a target='_blank' href='https://remix.run/tutorials/blog' rel='noreferrer noopener'>
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a target='_blank' href='https://remix.run/tutorials/jokes' rel='noreferrer noopener'>
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target='_blank' href='https://remix.run/docs' rel='noreferrer noopener'>
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+      {session ? (
+        <button onClick={handleSignOut}>Sign out</button>
+      ) : (
+        <button onClick={handleSignIn}>Sign in with Google</button>
+      )}
     </main>
   );
 }
