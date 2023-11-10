@@ -27,6 +27,7 @@ export const loader = async ({ request }) => {
     const { error } = await supabaseClient.auth.exchangeCodeForSession(code);
 
     if (!error) {
+      requestUrl.searchParams.delete('code');
       return redirect(next, { headers });
     }
   }
