@@ -1,4 +1,4 @@
-import { redirect, createCookie } from '@remix-run/node';
+import { redirect } from '@remix-run/node';
 import { createServerClient, parse, serialize } from '@supabase/ssr';
 
 export const loader = async ({ request }) => {
@@ -20,15 +20,11 @@ export const loader = async ({ request }) => {
         },
         async set(key, value, options) {
           console.log(`Inside SET: ${key}`)
-          const ck = createCookie(key)
-          headers.append('Set-Cookie', await ck.serialize(value, options));
-          // headers.append('Set-Cookie', serialize(key, value, options));
+          headers.append('Set-Cookie', serialize(key, value, options));
         },
         async remove(key, options) {
           console.log(`Inside REMOVE: ${key}`)
-          const ck = createCookie(key)
-          headers.append('Set-Cookie', await ck.serialize('', options));
-          // headers.append('Set-Cookie', serialize(key, '', options));
+          headers.append('Set-Cookie', serialize(key, '', options));
         },
       },
     });
