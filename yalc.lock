@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@supabase/ssr": {
-      "signature": "17186dca598b16d82624189da24eb461",
+      "signature": "2c34fd50c4c30cf10fcf858f39960034",
       "file": true,
       "replaced": "^0.0.10"
     }

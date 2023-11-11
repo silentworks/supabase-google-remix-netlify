@@ -51,7 +51,7 @@ var DEFAULT_COOKIE_OPTIONS = {
 
 // src/utils/chunker.ts
 function createChunkRegExp(chunkSize) {
-  return new RegExp(".{1," + chunkSize + "}", "g");
+  return new RegExp(`(.{1,${chunkSize}})(?=%[0-9A-Fa-f]{2}|$)`, "g");
 }
 var MAX_CHUNK_SIZE = 3180;
 var MAX_CHUNK_REGEXP = createChunkRegExp(MAX_CHUNK_SIZE);
