@@ -29,7 +29,7 @@ function createChunks(key, value, chunkSize) {
   }
   const encodedChunks = encodedValue.match(re) || [];
   return encodedChunks.map((chunk, index) => ({
-    name: `${key}.${index}`,
+    name: `${key}.${index + 1}`,
     value: decodeURIComponent(chunk)
   }));
 }
@@ -39,7 +39,7 @@ async function combineChunks(key, retrieveChunk) {
     return value;
   }
   let values = [];
-  for (let i = 0; ; i++) {
+  for (let i = 1; ; i++) {
     const chunkName = `${key}.${i}`;
     const chunk = await retrieveChunk(chunkName);
     if (!chunk) {
