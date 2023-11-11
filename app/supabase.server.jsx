@@ -13,16 +13,16 @@ export const supabaseServer = (request) => {
       get(key) {
         return cookies[key];
       },
-      set(key, value, options) {
+      async set(key, value, options) {
         console.log(`Inside SET: ${key}`)
         const ck = createCookie(key)
-        headers.append('Set-Cookie', ck.serialize(value, options));
+        headers.append('Set-Cookie', await ck.serialize(value, options));
         // headers.append('Set-Cookie', serialize(key, value, options));
       },
-      remove(key, options) {
+      async remove(key, options) {
         console.log(`Inside REMOVE: ${key}`)
         const ck = createCookie(key)
-        headers.append('Set-Cookie', ck.serialize('', options));
+        headers.append('Set-Cookie', await ck.serialize('', options));
         // headers.append('Set-Cookie', serialize(key, '', options));
       },
     },
