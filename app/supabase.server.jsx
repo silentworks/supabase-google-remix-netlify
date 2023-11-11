@@ -1,3 +1,4 @@
+import { createCookie } from '@remix-run/node';
 import { createServerClient, parse, serialize } from '@supabase/ssr';
 
 export const supabaseServer = (request) => {
@@ -13,10 +14,16 @@ export const supabaseServer = (request) => {
         return cookies[key];
       },
       set(key, value, options) {
-        headers.append('Set-Cookie', serialize(key, value, options));
+        console.log(`Inside SET: ${key}`)
+        const ck = createCookie(key)
+        headers.append('Set-Cookie', ck.serialize(value, options));
+        // headers.append('Set-Cookie', serialize(key, value, options));
       },
       remove(key, options) {
-        headers.append('Set-Cookie', serialize(key, '', options));
+        console.log(`Inside REMOVE: ${key}`)
+        const ck = createCookie(key)
+        headers.append('Set-Cookie', ck.serialize('', options));
+        // headers.append('Set-Cookie', serialize(key, '', options));
       },
     },
   });
