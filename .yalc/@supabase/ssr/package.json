@@ -41,5 +41,5 @@
 	"peerDependencies": {
 		"@supabase/supabase-js": "^2.33.1"
 	},
-	"yalcSig": "2c34fd50c4c30cf10fcf858f39960034"
+	"yalcSig": "ad637a842a64bfa30d8d8316a3cabe5e"
 }

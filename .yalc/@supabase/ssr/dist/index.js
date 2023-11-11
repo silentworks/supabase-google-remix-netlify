@@ -53,7 +53,7 @@ var DEFAULT_COOKIE_OPTIONS = {
 function createChunkRegExp(chunkSize) {
   return new RegExp(`(.{1,${chunkSize}})(?=%[0-9A-Fa-f]{2}|$)`, "g");
 }
-var MAX_CHUNK_SIZE = 3180;
+var MAX_CHUNK_SIZE = 2180;
 var MAX_CHUNK_REGEXP = createChunkRegExp(MAX_CHUNK_SIZE);
 function createChunks(key, value, chunkSize) {
   const re = chunkSize !== void 0 ? createChunkRegExp(chunkSize) : MAX_CHUNK_REGEXP;
