@@ -14,11 +14,11 @@ export const supabaseServer = (request) => {
       },
       async set(key, value, options) {
         console.log(`Inside SET: ${key}`)
-        headers.append('Set-Cookie', serialize(key, value, options));
+        headers.set('Set-Cookie', serialize(key, value, options));
       },
       async remove(key, options) {
         console.log(`Inside REMOVE: ${key}`)
-        headers.append('Set-Cookie', serialize(key, '', options));
+        headers.set('Set-Cookie', serialize(key, '', options));
       },
     },
   });
