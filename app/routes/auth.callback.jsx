@@ -10,7 +10,7 @@ export const loader = async ({ request }) => {
     const { supabaseClient, headers } = supabaseServer(request)
     const { error } = await supabaseClient.auth.exchangeCodeForSession(code);
 
-    console.log({ error })
+    console.log({ error, headers })
     if (!error) {
       requestUrl.searchParams.delete('code');
       return redirect(next, { headers });
