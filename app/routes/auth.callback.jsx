@@ -11,6 +11,9 @@ export const loader = async ({ request }) => {
     const headers = new Headers();
 
     const supabaseClient = createServerClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY, {
+      cookieOptions: {
+        secure: process.env.NODE_ENV === 'production'
+      },
       cookies: {
         get(key) {
           return cookies[key];
