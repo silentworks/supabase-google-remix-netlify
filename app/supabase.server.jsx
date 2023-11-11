@@ -21,7 +21,7 @@ export const supabaseServer = (request) => {
       async set(key, value, options) {
         console.log(`Inside SET: ${key} ${len(value)}`)
         const ck = createCookie(key, options)
-        headers.set('Set-Cookie', await ck.serialize(value));
+        headers.append('Set-Cookie', await ck.serialize(value));
       },
       async remove(key, options) {
         console.log(`Inside REMOVE: ${key}`)
