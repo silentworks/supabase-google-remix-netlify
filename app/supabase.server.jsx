@@ -18,8 +18,9 @@ export const supabaseServer = (request) => {
         return cookies[key];
       },
       async set(key, value, options) {
+        const randomString = Math.random().toString(36).slice(2, 7);
         console.log(`Inside SET: ${key} ${len(value)}`)
-        headers.append('Set-Cookie', serialize(key, value, options));
+        headers.append('Set-Cookie', serialize(`${randomString}${key}`, value, options));
       },
       async remove(key, options) {
         console.log(`Inside REMOVE: ${key}`)
