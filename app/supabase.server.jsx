@@ -19,7 +19,7 @@ export const supabaseServer = (request) => {
         return cookies[key];
       },
       async set(key, value, options) {
-        console.log(`Inside SET: ${key} ${len(value)}`)
+        console.log(`Inside SET: ${key} ${len(key + value)}`)
         const ck = createCookie(key, options)
         headers.append('Set-Cookie', await ck.serialize(value));
       },
