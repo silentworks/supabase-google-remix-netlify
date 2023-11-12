@@ -10,5 +10,5 @@ export const loader = async ({ request }) => {
     headers.append('Set-Cookie', await cookie.serialize(chunk));
   })
     
-  return redirect(next, { headers });
+  return redirect('/', { headers });
 };
