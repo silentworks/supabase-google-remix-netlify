@@ -27,6 +27,7 @@ export const loader = async ({ request }) => {
   return new Response(null, {
     status: 302,
     headers: {
+      "Location": "/",
       "Set-Cookie": serialize('my-test', "hello-world"),
       // @ts-expect-error
       "Set-Cookie": serialize('my-test-cookie.1', "hello-people"),
