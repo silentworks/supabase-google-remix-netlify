@@ -13,7 +13,9 @@ export const loader = async ({ request }) => {
   console.log({ ...Object.fromEntries(responseHeaders) })
   return redirect('/', { 
     headers: {
-      ...Object.fromEntries(responseHeaders)
+      "Set-Cookie": serialize('my-test-cookie.0', "hello-world"),
+        // @ts-expect-error
+      "Set-Cookie": serialize('my-test-cookie.1', "hello-people"),
     }
   });
 };
