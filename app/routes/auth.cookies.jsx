@@ -10,11 +10,10 @@ export const loader = async ({ request }) => {
       maxAge: 604_800
     }));
   })
-  console.log({ responseHeaders })
+  console.log({ ...Object.fromEntries(responseHeaders) })
   return redirect('/', { 
-    headers: [
-      ['Set-Cookie', 'a=1'],
-      ['Set-Cookie', 'b=2'],
-    ]
+    headers: {
+      ...Object.fromEntries(responseHeaders)
+    }
   });
 };
