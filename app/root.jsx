@@ -38,9 +38,9 @@ export const loader = async ({ request }) => {
       session,
       user,
     },
-    {
-      headers,
-    }
+    // {
+    //   headers,
+    // }
   );
 };
 
