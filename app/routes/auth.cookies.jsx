@@ -20,7 +20,7 @@ export const loader = async ({ request }) => {
   // });
   responseHeaders.append('Location', '/')
   return new Response(null, {
-    status: 303,
+    status: 302,
     headers: responseHeaders,
   })
 };
