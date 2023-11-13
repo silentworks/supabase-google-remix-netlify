@@ -5,7 +5,7 @@ export const loader = async ({ request }) => {
   const responseHeaders = new Headers();
   const chunks = ['hello-world.and.more.to.come', 'there.will.be.more']
   chunks.forEach(async (chunk, i) => {
-    responseHeaders.set('Set-Cookie', serialize(`my-cookie.${i}`, chunk, {
+    responseHeaders.append('Set-Cookie', serialize(`my-cookie.${i}`, chunk, {
       sameSite: "lax",
       maxAge: 604_800
     }));
