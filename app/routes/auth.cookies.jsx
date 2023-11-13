@@ -12,8 +12,9 @@ export const loader = async ({ request }) => {
   })
   console.log({ responseHeaders })
   return redirect('/', { 
-    headers: {
-      ...Object.fromEntries(responseHeaders)
-    }
+    headers: [
+      ['Set-Cookie', 'a=1'],
+      ['Set-Cookie', 'b=2'],
+    ]
   });
 };
